@@ -96,12 +96,11 @@ public class Details extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Long inCart;
+		
 		ArrayList<String>cartList = new ArrayList<String>();
 		cartList.add((String) session.getAttribute("ProdId"));
-		inCart = (Long) session.getAttribute("ProdId");
-		
-		
+		session.setAttribute("ProductsInCart", cartList);
+
 		String output = "";
 		output = "Added to cart!";
 		request.setAttribute("message2", output);

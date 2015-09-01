@@ -47,11 +47,12 @@ public class ShoppingCart extends HttpServlet {
 		String output="";
 		List<Product> a = getProduct();
 		output = "";
-		
 		HttpSession session = request.getSession();
-		output = session.getId();
-		System.out.println(output);
-		
+		ArrayList<String>shoppingCartList = new ArrayList<String>();
+		shoppingCartList = (ArrayList<String>) session.getAttribute("ProductsInCart");
+		for (int i = 0; i < shoppingCartList.size(); i++){
+			System.out.println(shoppingCartList.get(i));
+		}
 
 		
 	    getServletContext().getRequestDispatcher("/ProductList").forward(request,response);
