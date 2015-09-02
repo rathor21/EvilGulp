@@ -40,6 +40,8 @@ h1 {
 				<li class="active"><a href="#">Product List</a></li>
 				<li><a href="ShoppingCart">My Cart</a></li>
 				<li><a href="CheckOut">Checkout</a></li>
+				<li><a href="login.jsp">Login</a></li>
+				<li><a href="register.jsp">Register</a></li>
 			</ul>
 		</div>
 	</div>

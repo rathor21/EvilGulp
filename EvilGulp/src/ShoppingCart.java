@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Placeorder;
 import model.Product;
 import customTools.DBUtil;
 
@@ -42,7 +43,15 @@ public class ShoppingCart extends HttpServlet {
 						model.Product.class).setMaxResults(20).getResultList();
 		return prod;
 	}
-
+	public List<Placeorder> getOrder(int id) {
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<model.Placeorder> order = em
+				.createQuery("Select p from Placeorder p where p.userId =:userID")
+    			.setParameter("userID", id)
+    		    .setMaxResults(20)
+    		    .getResultList();
+		return order;
+	}
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String output = "";
@@ -53,7 +62,11 @@ public class ShoppingCart extends HttpServlet {
 		HttpSession session = request.getSession();
 		long item;
 		double total = 0;
-		shoppingCartList = (ArrayList<Long>) session
+		int Id = (int) session.getAttribute("UserId");
+		List<Placeorder> order = getOrder(Id);
+		
+		
+		/*shoppingCartList = (ArrayList<Long>) session
 				.getAttribute("ProductsInCart");
 		for (int i = 0; i < shoppingCartList.size(); i++) {
 			item = shoppingCartList.get(i);
@@ -67,6 +80,7 @@ public class ShoppingCart extends HttpServlet {
 				}
 			}
 		}
+		*/
 		session.setAttribute("total", total);
 		output += "</table>"+"<h2>Total: "+total+"</h2><input type=\"submit\" class=\"btn btn-info\" value=\"Checkout\"></form>";
 		request.setAttribute("message", output);

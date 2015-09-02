@@ -36,8 +36,9 @@
   <div class="jumbotron">
     <h1>EvilGulp Store</h1>      
     <p>The world's most evil electronic store!</p> 
+          <h2>Shopping Cart</h2> 
       </div>
-      <h2>Shopping Cart</h2>  
+ 
 ${message}
 
 </body>

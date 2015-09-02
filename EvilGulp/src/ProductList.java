@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Product;
 import customTools.DBUtil;
@@ -41,7 +42,8 @@ public class ProductList extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		
 		String output="";
 		String select = "";
 		output+="<form role=\"form\" action=\"ShoppingCart\" method=\"get\"><table class= \"table table-striped\">";

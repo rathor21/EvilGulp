@@ -13,7 +13,7 @@
    p {background-color: white;}
    h1{text:white; text-aligh-left;}
    </style>
-<title>Product Details</title>
+<title>Register</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -24,10 +24,10 @@
     <div>
       <ul class="nav navbar-nav">
         <li ><a href="ProductList">Product List</a></li>
-        <li><a href="ShoppingCart">My Cart</a></li>
-        <li><a href="CheckOut">Checkout</a></li>
-         <li><a href="login.jsp">Login</a></li>
-         <li><a href="register.jsp">Register</a></li>
+        <li ><a href="#">My Cart</a></li>
+        <li><a href="#">Checkout</a></li>
+        <li class="active"><a href="#">Login</a></li>
+        <li><a href="#">Register</a></li>
       </ul>
     </div>
   </div>
@@ -36,10 +36,25 @@
 <div class="container">
   <div class="jumbotron">
     <h1>EvilGulp Store</h1>      
-    <p>The world's most evil electronic store!</p>      
+    <p>The world's most evil electronic store!</p> 
+        <h2>Register</h2>  
+      </div>
   </div>
-  
-  ${message}
-  ${message2}
+<form role="form" action = "Login" method = "post">
+    <div class="form-group">
+      <label for="name"></label>
+      <input type="text" class="form-control" id="user" name="user" placeholder="Enter user name">
+    </div>
+     <div class="form-group">
+      <label for="address"></label>
+      <input type="passsword" class="form-control" id="pwd" name= "pwd" placeholder="Enter password">
+    </div>
 
+    
+    <button type="submit" class="btn btn-default">Register</button>
+    </form>
+       
+    ${message}
+  
+</body>
 </html>
