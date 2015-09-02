@@ -13,8 +13,7 @@
    p {background-color: white;}
    h1{text:white; text-aligh-left;}
    </style>
-<title>Shopping Cart</title>
-</head>
+<title>CheckOut</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -25,8 +24,8 @@
     <div>
       <ul class="nav navbar-nav">
         <li ><a href="ProductList">Product List</a></li>
-        <li class="active"><a href="#">My Cart</a></li>
-        <li><a href="CheckOut">Checkout</a></li>
+        <li ><a href="ShoppingCart">My Cart</a></li>
+        <li class="active"><a href="#">Checkout</a></li>
       </ul>
     </div>
   </div>
@@ -36,9 +35,32 @@
   <div class="jumbotron">
     <h1>EvilGulp Store</h1>      
     <p>The world's most evil electronic store!</p> 
+      <h2>Checkout</h2> 
       </div>
-      <h2>Shopping Cart</h2>  
-${message}
+     
+
+
+
+<div class="container">
+  
+  <form role="form" action = "ProductList" method = "get">
+    <div class="form-group">
+      <label for="name"></label>
+      <input type="text" class="form-control" id="name" placeholder="Enter name">
+    </div>
+     <div class="form-group">
+      <label for="address"></label>
+      <input type="text" class="form-control" id="address" placeholder="Enter address">
+    </div>
+     <div class="form-group">
+      <label for="credit"></label>
+      <input type="text" class="form-control" id="creditcard" placeholder="Enter credit card number">
+    </div>
+ 
+    ${message}
+    <button type="submit" class="btn btn-default">Submit Order</button>
+  </form>
+</div>
 
 </body>
 </html>

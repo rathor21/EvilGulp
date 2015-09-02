@@ -39,6 +39,7 @@ h1 {
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">Product List</a></li>
 				<li><a href="ShoppingCart">My Cart</a></li>
+				<li><a href="CheckOut">Checkout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -49,9 +50,7 @@ h1 {
 			<h1>EvilGulp Store</h1>
 			<p>The world's most evil electronic store!</p>
 		</div>
-	
-		${message} 
-	
-		
+
+		${message}
 </body>
 </html>

@@ -20,6 +20,7 @@ import customTools.DBUtil;
 @WebServlet("/Details")
 public class Details extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ArrayList<Long> cartList = new ArrayList<Long>();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -96,13 +97,14 @@ public class Details extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
-		ArrayList<String>cartList = new ArrayList<String>();
-		cartList.add((String) session.getAttribute("ProdId"));
+
+		cartList.add((Long) session.getAttribute("ProdId"));
+		System.out.println("Added Product");
 		session.setAttribute("ProductsInCart", cartList);
 
 		String output = "";
 		output = "Added to cart!";
+
 		request.setAttribute("message2", output);
 		getServletContext().getRequestDispatcher("/details.jsp").forward(
 				request, response);
