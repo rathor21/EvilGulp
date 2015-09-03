@@ -12,34 +12,26 @@ import java.math.BigDecimal;
  * 
  */
 @Entity
-@Table(name="PLACEORDER", schema= "TESTDB")
+@Table(name="Placeorder", schema= "TESTDB")
 @NamedQuery(name="Placeorder.findAll", query="SELECT p FROM Placeorder p")
 public class Placeorder implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private long userid;
-
-	private BigDecimal orderid;
+	private long orderid;
 
 	private BigDecimal prodid;
+
+	private BigDecimal userid;
 
 	public Placeorder() {
 	}
 
-	public long getUserid() {
-		return this.userid;
-	}
-
-	public void setUserid(long userid) {
-		this.userid = userid;
-	}
-
-	public BigDecimal getOrderid() {
+	public long getOrderid() {
 		return this.orderid;
 	}
 
-	public void setOrderid(BigDecimal orderid) {
+	public void setOrderid(long orderid) {
 		this.orderid = orderid;
 	}
 
@@ -49,6 +41,14 @@ public class Placeorder implements Serializable {
 
 	public void setProdid(BigDecimal prodid) {
 		this.prodid = prodid;
+	}
+
+	public BigDecimal getUserid() {
+		return this.userid;
+	}
+
+	public void setUserid(BigDecimal userid) {
+		this.userid = userid;
 	}
 
 }

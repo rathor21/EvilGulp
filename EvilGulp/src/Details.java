@@ -26,6 +26,7 @@ import customTools.DBUtil;
 public class Details extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Long> cartList = new ArrayList<Long>();
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -98,60 +99,59 @@ public class Details extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	  public static void insertOrder(Placeorder inputOrder) 
-	    {
-	    	EntityManager em = DBUtil.getEmFactory().createEntityManager();
-	    	EntityTransaction trans = em.getTransaction();
-	    	trans.begin();
-	    	try {
-	    	em.persist(inputOrder);
-	    	trans.commit();
-	    	} catch (Exception e) {
-	    	System.out.println(e);
-	    	trans.rollback();
-	    	} finally {
-	    
-	    	}
-	    }
-	  
+	public static void insertOrder(Placeorder inputOrder) {
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		try {
+			em.persist(inputOrder);
+			trans.commit();
+		} catch (Exception e) {
+			System.out.println(e);
+			trans.rollback();
+		} finally {
+
+		}
+	}
+
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		int userId;
 		try {
-			userId = (int) session.getAttribute("userId");
-			if ((int)session.getAttribute("userId") > 0) {
-				//cartList.add((Long) session.getAttribute("ProdId"));
-				BigDecimal prodid =  (BigDecimal) session.getAttribute("ProdId");
+			BigDecimal userID = new BigDecimal((int) session.getAttribute("userId"));
+			System.out.println(userID);
+			if ((int) session.getAttribute("userId")>0) {
+				// cartList.add((Long) session.getAttribute("ProdId"));
+
+				BigDecimal prodID = new BigDecimal(
+						(long) session.getAttribute("ProdId"));
+				System.out.println("prod id " + prodID);
 				System.out.println("Added Product");
-				//session.setAttribute("ProductsInCart", cartList);
-			model.Placeorder inputOrder = new Placeorder();
-				inputOrder.setUserid(userId);
-				inputOrder.setProdid(prodid);
+				// session.setAttribute("ProductsInCart", cartList);
+				model.Placeorder inputOrder = new Placeorder();
+				inputOrder.setUserid(userID);
+				inputOrder.setProdid(prodID);
 				insertOrder(inputOrder);
-				
-				
-				
+
 				String output = "";
 				output = "Added to cart!";
 
 				request.setAttribute("message2", output);
-				getServletContext().getRequestDispatcher("/details.jsp").forward(
-						request, response);
-			}
-		} catch (Exception e) {
-			String output = "";
-			output = "Login to add to cart";
+				getServletContext().getRequestDispatcher("/details.jsp")
+						.forward(request, response);
 
-			request.setAttribute("message2", output);
-			getServletContext().getRequestDispatcher("/details.jsp").forward(
-					request, response);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+//			String output = "";
+//			output = "In catch...Login to add to cart";
+//
+//			request.setAttribute("message2", output);
+//			getServletContext().getRequestDispatcher("/details.jsp").forward(
+//					request, response);
 		}
-				
-		
-		
-		
-		
+
 	}
 
 }
